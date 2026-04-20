@@ -1,18 +1,15 @@
-const router = require("express").Router();
-const Result = require("../models/Result");
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exam System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Online Exam</h1>
+    <button onclick="start()">Start Test</button>
+  </div>
 
-router.get("/analytics", async (req, res) => {
-  const data = await Result.find();
-
-  const avg = data.reduce((a, b) => a + b.score, 0) / (data.length || 1);
-
-  const weak = avg < 5 ? "Students weak" : "Students good";
-
-  res.json({
-    users: data.length,
-    avg,
-    insight: weak
-  });
-});
-
-module.exports = router;
+  <script src="app.js"></script>
+</body>
+</html>
