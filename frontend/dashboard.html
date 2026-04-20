@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Analytics</h2>
+  <canvas id="chart"></canvas>
+
+  <script>
+    fetch("http://localhost:5000/admin/analytics")
+      .then(res => res.json())
+      .then(data => {
+        new Chart(document.getElementById("chart"), {
+          type: "bar",
+          data: {
+            labels: ["Users", "Avg Score"],
+            datasets: [{
+              label: "Stats",
+              data: [data.users, data.avg]
+            }]
+          }
+        });
+      });
+  </script>
+</body>
+</html>
